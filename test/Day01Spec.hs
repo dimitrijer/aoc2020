@@ -5,25 +5,7 @@ import Test.Hspec
 
 spec :: Spec
 spec = do
-  -- partOne tests
-  describe "partOne" $ do
-    context "on empty string" $ do
-      it "returns nothing" $ do
-        partOne "" `shouldBe` Nothing
-
-    context "on one-element list that does not add up" $ do
-      it "returns nothing" $ do
-        partOne "1" `shouldBe` Nothing
-
-    context "on one-element list that adds up" $ do
-      it "returns nothing (no second element)" $ do
-        partOne "2020" `shouldBe` Nothing
-
-    context "on two-element list that adds up" $ do
-      it "returns product of both elements" $ do
-        partOne "2018\n2" `shouldBe` Just 4036
-
-  -- parseReport tests
+  -- parseReport
   describe "parseReport" $ do
     context "on empty string" $ do
       it "returns just an empty list" $ do
@@ -45,7 +27,7 @@ spec = do
       it "returns nothing" $ do
         parseReport "1\n3\n5a\n6" `shouldBe` Nothing
 
-  -- combineTriplets test
+  -- combineTriplets
   describe "combineTriplets" $ do
     context "on empty list" $ do
       it "returns empty list" $
@@ -66,3 +48,32 @@ spec = do
     context "on list with four elements" $ do
       it "returns a valid combination list" $
         combineTriplets [1, 5, 8, 13] `shouldBe` [[1, 5, 8], [1, 5, 13], [1, 8, 13], [5, 8, 13]]
+
+  let ex = "1721\n979\n366\n299\n675\n1456"
+  -- partOne
+  describe "partOne" $ do
+    context "on empty string" $ do
+      it "returns nothing" $ do
+        partOne "" `shouldBe` Nothing
+
+    context "on one-element list that does not add up" $ do
+      it "returns nothing" $ do
+        partOne "1" `shouldBe` Nothing
+
+    context "on one-element list that adds up" $ do
+      it "returns nothing (no second element)" $ do
+        partOne "2020" `shouldBe` Nothing
+
+    context "on two-element list that adds up" $ do
+      it "returns product of both elements" $ do
+        partOne "2018\n2" `shouldBe` Just 4036
+
+    context "on example input" $ do
+      it "returns expected output" $ do
+        partOne ex `shouldBe` Just 514579
+
+  -- partTwo
+  describe "partTwo" $ do
+    context "on example input" $ do
+      it "returns expected output" $ do
+        partTwo ex `shouldBe` Just 241861950
