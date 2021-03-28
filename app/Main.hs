@@ -2,6 +2,7 @@ module Main where
 
 import Day01
 import Day02
+import Day03
 import System.Environment
 
 main :: IO ()
@@ -19,5 +20,10 @@ main = do
           input <- readFile "resources/day02.txt"
           print $ Day02.partOne input
           print $ Day02.partTwo input
+      3 ->
+        do
+          input <- readFile "resources/day03.txt"
+          print $ Day03.partOne input
+          print $ Day03.partTwo input
       _ -> putStrLn "Unknown day."
     else putStrLn "Please input day number."
