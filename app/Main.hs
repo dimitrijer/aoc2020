@@ -5,6 +5,7 @@ import Day02
 import Day03
 import Day04
 import Day05
+import Day06
 import System.Environment
 
 main :: IO ()
@@ -37,5 +38,10 @@ main = do
           input <- readFile "resources/day05.txt"
           print $ Day05.partOne input
           print $ Day05.partTwo input
+      6 ->
+        do
+          input <- readFile "resources/day06.txt"
+          print $ Day06.partOne input
+          print $ Day06.partTwo input
       _ -> putStrLn "Unknown day."
     else putStrLn "Please input day number."
