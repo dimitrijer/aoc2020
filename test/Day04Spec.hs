@@ -2,7 +2,6 @@
 
 module Day04Spec where
 
-import Data.Either
 import Day04
 import Test.Hspec
 import Text.Parsec (parse)
