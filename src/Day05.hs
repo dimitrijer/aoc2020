@@ -1,5 +1,3 @@
-{-# LANGUAGE LambdaCase #-}
-
 module Day05 where
 
 import Data.List (find, sort)
