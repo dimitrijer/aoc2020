@@ -32,6 +32,7 @@ library
       Day04
       Day05
       Day06
+      Day07
   other-modules:
       Paths_aoc2020
   hs-source-dirs:
@@ -66,6 +67,7 @@ test-suite aoc2020-test
       Day04Spec
       Day05Spec
       Day06Spec
+      Day07Spec
       Paths_aoc2020
   hs-source-dirs:
       test
