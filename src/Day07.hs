@@ -77,7 +77,7 @@ splode bags p (Bag bid c) =
     new = concatMap (uncurry splodeBag) toExpand
 
 -- | The `splodeBag` function takes a bag and a number of times it appears, and
--- returns sploaded contents of the bag.
+-- returns sploded contents of the bag.
 splodeBag :: Bag -> Int -> [(BagId, Int)]
 splodeBag Bag {contents = c} cnt = (fmap . fmap) (cnt *) c
 
@@ -93,7 +93,7 @@ partOne s = length $ filter (contains (BagId "shiny gold")) bs'
 -- Part Two --------------------------------------------------------------------
 
 -- | The `markBags` function adds a special marker bag to every non-empty bag,
--- for counting themselves while sploading.
+-- for counting themselves while sploding.
 markBags :: [Bag] -> [Bag]
 markBags bs =
   let markerBagId = BagId "sparkly rainbow"
