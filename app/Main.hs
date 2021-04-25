@@ -11,6 +11,7 @@ import Day08
 import Day09
 import Day10
 import Day11
+import Day13
 import System.Environment
 import Text.Printf
 
@@ -28,6 +29,7 @@ exec input day = do
     9 -> do print $ Day09.partOne input; print $ Day09.partTwo input
     10 -> do print $ Day10.partOne input; print $ Day10.partTwo input
     11 -> do print $ Day11.partOne input; print $ Day11.partTwo input
+    13 -> do print $ Day13.partOne input; print $ Day13.partTwo input
     _ -> do putStrLn $ "Unknown day: " ++ show day
 
 main :: IO ()
