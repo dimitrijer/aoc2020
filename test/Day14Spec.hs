@@ -1,6 +1,8 @@
 module Day14Spec where
 
+import qualified Control.Monad.State as S
 import Data.Bits
+import qualified Data.Map as M
 import Day14
 import Test.Hspec
 
@@ -12,6 +14,13 @@ spec = do
           ++ "mem[8] = 11\n"
           ++ "mem[7] = 101\n"
           ++ "mem[8] = 0"
+      exMask' = "000000000000000000000000000000X1001X"
+      exMask'' = "00000000000000000000000000000000X0XX"
+      ex' =
+        "mask = 000000000000000000000000000000X1001X\n"
+          ++ "mem[42] = 100\n"
+          ++ "mask = 00000000000000000000000000000000X0XX\n"
+          ++ "mem[26] = 1"
 
   -- parseMask
   describe "parseMask" $ do
@@ -47,3 +56,57 @@ spec = do
     context "on example input" $ do
       it "returns expected output" $ do
         partOne ex `shouldBe` Right 165
+
+  -- write'
+  describe "write'" $ do
+    context "on all-0s float mask" $ do
+      it "executes single write" $ do
+        let s0 = (M.empty, orId, orId)
+        S.evalState (write' 156 133) s0 `shouldBe` M.insert 156 133 M.empty
+
+    context "on all-0s float mask with single bit set in or mask" $ do
+      it "executes single write" $ do
+        let s0 = (M.empty, orId, 64)
+        S.evalState (write' 156 133) s0 `shouldBe` M.insert 220 133 M.empty
+
+    context "on float mask with one set bit" $ do
+      it "executes two writes" $ do
+        let s0 = (M.empty, 1, orId)
+        S.evalState (write' 0 10) s0 `shouldBe` M.insert 0 10 (M.insert 1 10 M.empty)
+
+    context "on float mask with three set bits" $ do
+      it "executes eight writes" $ do
+        let s0 = (M.empty, 7, orId)
+        S.evalState (write' 16 234) s0
+          `shouldBe` ( M.insert 16 234
+                         . M.insert 17 234
+                         . M.insert 18 234
+                         . M.insert 19 234
+                         . M.insert 20 234
+                         . M.insert 21 234
+                         . M.insert 22 234
+                         . M.insert 23 234
+                         $ M.empty
+                     )
+    context "on example input" $ do
+      it "returns expected output" $ do
+        S.evalState (setMask 33 18 >> write' 42 100) (M.empty, 0, 0)
+          `shouldBe` ( M.insert 58 100
+                         . M.insert 59 100
+                         . M.insert 26 100
+                         . M.insert 27 100
+                         $ M.empty
+                     )
+
+  -- parseMask'
+  describe "parseMask'" $ do
+    context "on example input" $ do
+      it "returns expected output" $ do
+        parseMask' exMask' `shouldBe` (33, 18)
+        parseMask' exMask'' `shouldBe` (11, 0)
+
+  -- partTwo
+  describe "partTwo" $ do
+    context "on example input" $ do
+      it "returns expected output" $ do
+        partTwo ex' `shouldBe` Right 208
