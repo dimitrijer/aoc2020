@@ -7,7 +7,7 @@ load(
 haskell_binary(
     name = "main",
     srcs = ["Main.hs"],
-    compiler_flags = [
+    ghcopts = [
         "-threaded",
         "-rtsopts",
         "-with-rtsopts=-N",

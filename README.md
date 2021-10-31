@@ -9,3 +9,11 @@ With `nix`:
 $ nix-shell
 $ bazel run //app:main -- <day>
 ```
+
+## How to test
+
+Run all tests with:
+```bash
+$ nix-shell
+$ bazel test "//test:*"
+```
