@@ -4,7 +4,8 @@ Good exercise for learning Haskell.
 
 ## How to run
 
-With `stack`:
+With `nix`:
 ```bash
-$ stack run <day>
+$ nix-shell
+$ bazel run //app:main -- <day>
 ```

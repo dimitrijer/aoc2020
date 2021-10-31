@@ -7,13 +7,14 @@ load(
 haskell_binary(
     name = "main",
     srcs = ["Main.hs"],
-    data = ["//resources:input"],
     compiler_flags = [
         "-threaded",
         "-rtsopts",
         "-with-rtsopts=-N",
     ],
+    data = ["//resources:input"],
     deps = [
+        "//src:base",
         "//src:day01",
         "//src:day02",
         "//src:day03",
@@ -29,6 +30,5 @@ haskell_binary(
         "//src:day13",
         "//src:day14",
         "//src:day15",
-        "//src:base",
     ],
 )
