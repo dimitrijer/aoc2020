@@ -19,6 +19,7 @@ dependencies:
 - mtl >= 2.2
 - random >= 1.1
 - array >= 0.5
+- split >= 0.2
 
 library:
   source-dirs: src

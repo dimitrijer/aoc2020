@@ -85,7 +85,7 @@ write' :: Addr -> Val -> ST' Memory
 write' a x = do
   (mem, mFloat, mOr) <- S.get
   -- Create a sequence of `setBit` and `clearBit` transformations that correspond
-  -- to combinations of 1s in float flag.
+  -- to combinations of 1s in the float mask.
   let fss = sequence [[(`clearBit` i), (`setBit` i)] | i <- [0 .. 35], mFloat `testBit` i]
       -- Apply each unique list of transformations to OR-d address. Add identity
       -- transformation for address with no float bit changes.
@@ -102,7 +102,7 @@ parseMask' :: String -> (Mask, Mask)
 parseMask' m = foldr reduceMasks (orId, orId) $ zipWith toggleBit (reverse m) [0 ..]
   where
     toggleBit = \c i -> case c of
-      'X' -> (bit i, orId) -- set i-th bit to 1 in floating mask
+      'X' -> (bit i, orId) -- set i-th bit to 1 in float mask
       '1' -> (orId, bit i) -- set i-th bit to 1 in OR mask
       _ -> (orId, orId)
     reduceMasks = \(mFloat', mOr') (mFloat, mOr) -> (mFloat' .|. mFloat, mOr' .|. mOr)
