@@ -1,0 +1,6 @@
+bzl_library(
+    name = "defs",
+    srcs = [
+        "//macros:defs.bzl",
+    ],
+)

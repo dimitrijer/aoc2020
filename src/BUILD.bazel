@@ -1,0 +1,161 @@
+load(
+    "@rules_haskell//haskell:defs.bzl",
+    "haskell_library",
+    "haskell_toolchain_library",
+)
+
+package(
+    default_visibility = [
+        "//app:__pkg__",
+        "//test:__pkg__",
+    ],
+)
+
+haskell_toolchain_library(
+    name = "base",
+)
+
+haskell_toolchain_library(
+    name = "mtl",
+)
+
+haskell_toolchain_library(
+    name = "containers",
+)
+
+haskell_toolchain_library(
+    name = "parsec",
+)
+
+haskell_toolchain_library(
+    name = "split",
+)
+
+haskell_toolchain_library(
+    name = "random",
+)
+
+haskell_library(
+    name = "day01",
+    srcs = ["Day01.hs"],
+    deps = [":base"],
+)
+
+haskell_library(
+    name = "day02",
+    srcs = ["Day02.hs"],
+    deps = [
+        ":base",
+        ":parsec",
+    ],
+)
+
+haskell_library(
+    name = "day03",
+    srcs = ["Day03.hs"],
+    deps = [":base"],
+)
+
+haskell_library(
+    name = "day04",
+    srcs = ["Day04.hs"],
+    deps = [
+        ":base",
+        ":parsec",
+    ],
+)
+
+haskell_library(
+    name = "day05",
+    srcs = ["Day05.hs"],
+    deps = [":base"],
+)
+
+haskell_library(
+    name = "day06",
+    srcs = ["Day06.hs"],
+    deps = [
+        ":base",
+        ":containers",
+    ],
+)
+
+haskell_library(
+    name = "day07",
+    srcs = ["Day07.hs"],
+    deps = [
+        ":base",
+        ":parsec",
+    ],
+)
+
+haskell_library(
+    name = "day08",
+    srcs = ["Day08.hs"],
+    deps = [
+        ":base",
+        ":mtl",
+        ":parsec",
+    ],
+)
+
+haskell_library(
+    name = "day09",
+    srcs = ["Day09.hs"],
+    deps = [
+        ":base",
+        ":day01",
+    ],
+)
+
+haskell_library(
+    name = "day10",
+    srcs = ["Day10.hs"],
+    deps = [":base"],
+)
+
+haskell_library(
+    name = "day11",
+    srcs = ["Day11.hs"],
+    deps = [":base"],
+)
+
+haskell_library(
+    name = "day12",
+    srcs = ["Day12.hs"],
+    deps = [
+        ":base",
+        ":mtl",
+        ":parsec",
+    ],
+)
+
+haskell_library(
+    name = "day13",
+    srcs = ["Day13.hs"],
+    deps = [
+        ":base",
+        ":parsec",
+    ],
+)
+
+haskell_library(
+    name = "day14",
+    srcs = ["Day14.hs"],
+    deps = [
+        ":base",
+        ":containers",
+        ":mtl",
+        ":parsec",
+    ],
+)
+
+haskell_library(
+    name = "day15",
+    srcs = ["Day15.hs"],
+    deps = [
+        ":base",
+        ":containers",
+        ":split",
+    ],
+)

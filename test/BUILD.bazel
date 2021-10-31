@@ -1,0 +1,164 @@
+load(
+    "@rules_haskell//haskell:defs.bzl",
+    "haskell_toolchain_library",
+)
+load("//macros:defs.bzl", "spec_test")
+
+package(
+    default_visibility = ["//visibility:public"],
+)
+
+haskell_toolchain_library(
+    name = "hspec",
+)
+
+haskell_toolchain_library(
+    name = "random",
+)
+
+haskell_toolchain_library(
+    name = "array",
+)
+
+spec_test(
+    name = "day01_test",
+    srcs = ["Day01Spec.hs"],
+    deps = [
+        "//src:base",
+        "//src:day01",
+    ],
+)
+
+spec_test(
+    name = "day02_test",
+    srcs = ["Day02Spec.hs"],
+    deps = [
+        "//src:base",
+        "//src:day02",
+    ],
+)
+
+spec_test(
+    name = "day03_test",
+    srcs = ["Day03Spec.hs"],
+    deps = [
+        "//src:base",
+        "//src:day03",
+    ],
+)
+
+spec_test(
+    name = "day04_test",
+    srcs = ["Day04Spec.hs"],
+    deps = [
+        ":array",
+        "//src:base",
+        "//src:day04",
+        "//src:parsec",
+    ],
+)
+
+spec_test(
+    name = "day05_test",
+    srcs = ["Day05Spec.hs"],
+    deps = [
+        "//src:base",
+        "//src:day05",
+    ],
+)
+
+spec_test(
+    name = "day06_test",
+    srcs = ["Day06Spec.hs"],
+    deps = [
+        "//src:base",
+        "//src:day06",
+    ],
+)
+
+spec_test(
+    name = "day07_test",
+    srcs = ["Day07Spec.hs"],
+    deps = [
+        "//src:base",
+        "//src:day07",
+        "//src:parsec",
+    ],
+)
+
+spec_test(
+    name = "day08_test",
+    srcs = ["Day08Spec.hs"],
+    deps = [
+        "//src:base",
+        "//src:day08",
+    ],
+)
+
+spec_test(
+    name = "day09_test",
+    srcs = ["Day09Spec.hs"],
+    deps = [
+        ":array",
+        ":random",
+        "//src:base",
+        "//src:day09",
+    ],
+)
+
+spec_test(
+    name = "day10_test",
+    srcs = ["Day10Spec.hs"],
+    deps = [
+        "//src:base",
+        "//src:day10",
+    ],
+)
+
+spec_test(
+    name = "day11_test",
+    srcs = ["Day11Spec.hs"],
+    deps = [
+        "//src:base",
+        "//src:day11",
+    ],
+)
+
+spec_test(
+    name = "day12_test",
+    srcs = ["Day12Spec.hs"],
+    deps = [
+        "//src:base",
+        "//src:day12",
+        "//src:mtl",
+    ],
+)
+
+spec_test(
+    name = "day13_test",
+    srcs = ["Day13Spec.hs"],
+    deps = [
+        "//src:base",
+        "//src:day13",
+    ],
+)
+
+spec_test(
+    name = "day14_test",
+    srcs = ["Day14Spec.hs"],
+    deps = [
+        "//src:base",
+        "//src:containers",
+        "//src:day14",
+        "//src:mtl",
+    ],
+)
+
+spec_test(
+    name = "day15_test",
+    srcs = ["Day15Spec.hs"],
+    deps = [
+        "//src:base",
+        "//src:day15",
+    ],
+)
