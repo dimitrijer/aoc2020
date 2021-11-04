@@ -31,4 +31,5 @@ haskell_binary(
         "//src:day14",
         "//src:day15",
     ],
+    visibility = ["//visibility:public"],
 )
