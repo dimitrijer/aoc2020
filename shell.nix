@@ -29,5 +29,7 @@ pkgs.mkShell {
     neovim
     ghc_8_10_4
     openjdk11
+    haskell-language-server
+    nixpkgs-fmt
   ];
 }

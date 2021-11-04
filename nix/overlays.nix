@@ -13,6 +13,7 @@ self: super: {
       array
       split
       hspec
+      ormolu
     ]
   );
 }
