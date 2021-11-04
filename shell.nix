@@ -1,5 +1,5 @@
 let
-  pkgs = import ./nix/default.nix {};
+  pkgs = import ./nix/default.nix { };
 in
 pkgs.mkShell {
   # GNU ls has different CLI options than Darwin ls.
@@ -11,13 +11,13 @@ pkgs.mkShell {
   # Disable Bazel's Xcode toolchain detection which would configure compilers
   # and linkers from Xcode instead of from PATH.
   # See: https://github.com/bazelbuild/bazel/issues/4231
-  BAZEL_USE_CPP_ONLY_TOOLCHAIN=1;
+  BAZEL_USE_CPP_ONLY_TOOLCHAIN = 1;
 
   # Set UTF-8 locale.
-  LANG="C";
-  LC_CTYPE="UTF-8";
+  LANG = "C";
+  LC_CTYPE = "UTF-8";
 
-  buildInputs= with pkgs; [
+  buildInputs = with pkgs; [
     git
     # for SSL downloads
     cacert
