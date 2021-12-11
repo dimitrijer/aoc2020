@@ -69,7 +69,7 @@ load(
 )
 
 haskell_register_ghc_nixpkgs(
-    attribute_path = "ghc_8_10_4",
+    attribute_path = "ghc_8_10_7",
     repository = "@nixpkgs",
-    version = "8.10.4",
+    version = "8.10.7",
 )

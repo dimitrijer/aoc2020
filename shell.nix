@@ -1,11 +1,22 @@
 let
+  sources = import ./nix/sources.nix { };
+  pkgs_2105 = import sources.nixpkgs_2105 {
+    overlays = [ ];
+    config = { };
+  };
   pkgs = import ./nix/default.nix { };
+  nixfiles = import sources.nixfiles { };
+  neovim = nixfiles.neovim {
+    pkgs = pkgs;
+    withHaskell = true;
+  };
 in
 pkgs.mkShell {
   # GNU ls has different CLI options than Darwin ls.
   shellHooks = ''
     alias ll='ls -alh --color=auto'
     alias ls='ls -ah --color=auto'
+    alias vim='nvim'
   '';
 
   # Disable Bazel's Xcode toolchain detection which would configure compilers
@@ -25,11 +36,13 @@ pkgs.mkShell {
     nix
     # buildifier, buildozer and unused-deps
     bazel-buildtools
-    bazel_4
-    neovim
-    ghc_8_10_4
+    # Need bazel 4.0.0
+    pkgs_2105.bazel_4
+    # neovim
+    ghc_8_10_7
     openjdk11
     haskell-language-server
     nixpkgs-fmt
-  ];
+    ormolu
+  ] ++ [ neovim ];
 }
